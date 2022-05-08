@@ -12,7 +12,7 @@ async function handlerCreateUser(req, res) {
     const user = await createUser(newUser);
     res.status(201).json(user);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({ message: 'La contraseña debe tener mas de 8 caracteres e incluir un numero y una letra mayúscula' });
   }
 }
 

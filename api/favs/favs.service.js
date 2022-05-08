@@ -17,8 +17,11 @@ async function getOneFav(id) {
   return fav;
 }
 
-async function updateFav(id, fav) {
-  const updatedFav = await FavsModel.findByIdAndUpdate(id, fav);
+async function updateFav(id, body) {
+  const updatedFav = await FavsModel.findByIdAndUpdate(
+    id,
+    { $push: { item: body } },
+  );
   return updatedFav;
 }
 

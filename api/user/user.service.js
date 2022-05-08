@@ -15,6 +15,11 @@ async function getUserById(id) {
   return userById;
 }
 
+async function getUserByEmail(email) {
+  const userByEmail = await UserModel.findOne({ email });
+  return userByEmail;
+}
+
 async function updateUser(id, user) {
   const updatedUser = await UserModel.findByIdAndUpdate(id, user, { new: true });
   return updatedUser;
@@ -29,6 +34,7 @@ module.exports = {
   createUser,
   getAllUsers,
   getUserById,
+  getUserByEmail,
   updateUser,
   deleteUser,
 };
