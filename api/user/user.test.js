@@ -24,7 +24,7 @@ describe('User Endpoint', () => {
   });
 
   describe('get all users', () => {
-    it('should response with a 201 status code', async () => {
+    it('should response with a 200 status code', async () => {
       const res = await request.get('/api/users/');
       expect(res.statusCode).toEqual(200);
     });
@@ -35,7 +35,7 @@ describe('User Endpoint', () => {
   });
 
   describe('get one users', () => {
-    it('should response with a 201 status code', async () => {
+    it('should response with a 200 status code', async () => {
       const res = await request.get('/api/users/');
       const userId = res.body[0]._id;
       const getOneUser = await request.get(`/api/users/${userId}`);
@@ -58,7 +58,7 @@ describe('User Endpoint', () => {
   });
 
   describe('create a user', () => {
-    it('should respond with a 404 status code POST', async () => {
+    it('should respond with a 500 status code POST', async () => {
       const res = await request.post('/api/users').send({
         firstName: '',
         lastName: '',
@@ -90,7 +90,7 @@ describe('User Endpoint', () => {
       expect(respond.body).toBeInstanceOf(Object);
     });
 
-    it('should respond with a 404 status code if search for id PACTH', async () => {
+    it('should respond with a 404 status code', async () => {
       const id = '62461f4e8fpoiu';
       const user = {
         firstName: 'vicente',
@@ -111,7 +111,7 @@ describe('User Endpoint', () => {
 
     it('should respond with a 404 status code', async () => {
       const id = '62461f4e8fpoiu';
-      const res = await request.get(`/api/users/${id}`);
+      const res = await request.delete(`/api/users/${id}`);
       expect(res.statusCode).toEqual(404);
     });
   });
